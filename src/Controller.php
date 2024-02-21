@@ -51,6 +51,8 @@ class Controller
         header('Content-Disposition: inline');
         header("Content-Type: {$mimeType}");
 
+        // VULN 3: UNSAFE ECHO OF USER PROVIDED INPUT, LEADING TO XSS
+        // UPLOAD test.js file with contents <script>alert('hacked')</script>, and preview it
         echo $data;
         exit();
     }

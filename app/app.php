@@ -13,6 +13,7 @@ error_reporting(E_ALL);
 session_start();
 
 $_GET['action'] ??= 'index';
+// VULN 1: http://127.0.0.1:9876/?user=eena to access any user's files
 $user = $_GET['user'] ?? $_SESSION['user'] ?? null;
 
 $dotEnv = new Dotenv();
